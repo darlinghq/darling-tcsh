@@ -12,19 +12,17 @@ include_directories(
 add_compile_options(
 	-nostdinc
 	-no-cpp-precomp
-	#-mdynamic-no-picc Waiting for Mach-Os
+	-mdynamic-no-picc
 	-fstack-protector-all
 	-fPIC
 	-Wno-everything
 )
 
 add_definitions(
-	-D_PATH_TCSHELL='"/bin/tcsh"'
+	-D_PATH_TCSHELL="/bin/tcsh"
 	-DDARWIN
 )
 
-
-set(CMAKE_EXE_LINKER_FLAGS "-nodefaultlibs -nostdlib -fPIC -Wl,--version-script=${DARLING_TOP_DIRECTORY}/darwin.map")
 
 add_darling_executable(tcsh
 	tcsh/sh.c
@@ -82,9 +80,9 @@ add_darling_executable(tcsh
 	tcsh/tc.who.c
 )
 
-target_link_libraries(tcsh termcap iconv)
+target_link_libraries(tcsh system ncurses iconv)
 
-install(TARGETS tcsh DESTINATION libexec/darling/usr/bin)
+install(TARGETS tcsh DESTINATION libexec/darling/bin)
 
 install(FILES csh.cshrc csh.login csh.logout DESTINATION libexec/darling/etc)
 
