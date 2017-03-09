@@ -82,7 +82,10 @@ add_darling_executable(tcsh
 
 target_link_libraries(tcsh system ncurses iconv)
 
+include(InstallSymlink)
+
 install(TARGETS tcsh DESTINATION libexec/darling/bin)
+InstallSymlink(tcsh "${CMAKE_INSTALL_PREFIX}/libexec/darling/bin/csh")
 
 install(FILES csh.cshrc csh.login csh.logout DESTINATION libexec/darling/etc)
 
