@@ -84,7 +84,7 @@ add_darling_executable(tcsh
 
 target_link_libraries(tcsh termcap iconv)
 
-install(TARGETS tcsh DESTINATION libexec/darling/usr/bin)
+install(TARGETS tcsh DESTINATION libexec/darling/bin)
 
 install(FILES csh.cshrc csh.login csh.logout DESTINATION libexec/darling/etc)
 
