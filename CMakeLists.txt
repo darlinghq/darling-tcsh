@@ -16,10 +16,11 @@ add_compile_options(
 	-fstack-protector-all
 	-fPIC
 	-Wno-everything
+	-ggdb
 )
 
 add_definitions(
-	-D_PATH_TCSHELL='"/bin/tcsh"'
+	-D_PATH_TCSHELL="/bin/tcsh"
 	-DDARWIN
 )
 
