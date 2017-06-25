@@ -1,10 +1,6 @@
 project(tcsh)
 
 include_directories(
-	${CMAKE_SOURCE_DIR}/platform-include
-	${CMAKE_SOURCE_DIR}/src/libc/include/FreeBSD
-	${CMAKE_SOURCE_DIR}/src/libc/include/NetBSD
-	${CMAKE_SOURCE_DIR}/src/libiconv/include
 	${CMAKE_CURRENT_SOURCE_DIR}/tcsh
 	${CMAKE_CURRENT_SOURCE_DIR}/gen
 )
