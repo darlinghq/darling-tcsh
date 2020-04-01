@@ -16,7 +16,6 @@ add_compile_options(
 
 add_definitions(
 	-D_PATH_TCSHELL="/bin/tcsh"
-	-DDARWIN
 )
 
 
