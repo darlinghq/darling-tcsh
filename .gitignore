@@ -1,1 +1,4 @@
 *~
+*.o
+gen/tcsh
+gen/gethost

@@ -14,10 +14,10 @@ add_compile_options(
 	-Wno-everything
 )
 
-add_definitions(
-	-D_PATH_TCSHELL="/bin/tcsh"
+add_compile_definitions(
+	_PATH_TCSHELL="/bin/tcsh"
+	DARWIN
 )
-
 
 add_darling_executable(tcsh
 	tcsh/sh.c
@@ -41,6 +41,7 @@ add_darling_executable(tcsh
 	tcsh/sh.set.c
 	tcsh/sh.time.c
 	tcsh/glob.c
+	tcsh/dotlock.c
 	tcsh/mi.termios.c
 	tcsh/ma.setp.c
 	tcsh/vms.termcap.c
@@ -84,6 +85,31 @@ InstallSymlink(tcsh "${CMAKE_INSTALL_PREFIX}/libexec/darling/bin/csh")
 
 install(FILES csh.cshrc csh.login csh.logout DESTINATION libexec/darling/etc)
 
-install(FILES tcsh.1 DESTINATION libexec/darling/usr/share/man/man1)
+install(FILES tcsh/tcsh.man DESTINATION libexec/darling/usr/share/man/man1 RENAME tcsh.1)
 
-install(DIRECTORY locale DESTINATION libexec/darling/usr/share)
+# meow
+set(CATS
+	"C"         "C"
+	"et"        "et"
+	"finnish"   "fi"
+	"french"    "fr"
+	"german"    "de"
+	"greek"     "gr"
+	"italian"   "it"
+	"ja"        "ja"
+	"pl"        "pl"
+	"russian"   "ru"
+	"spanish"   "es"
+	"ukrainian" "ru_UA"
+)
+
+while(CATS)
+	list(GET CATS 0 cat_gen_name)
+	list(GET CATS 1 cat_install_dir_name)
+	install(
+		FILES gen/nls/${cat_gen_name}.cat
+		DESTINATION libexec/darling/usr/share/local/${cat_install_dir_name}/LC_MESSAGES
+		RENAME tcsh.cat
+	)
+	list(REMOVE_AT CATS 0 1)
+endwhile()
