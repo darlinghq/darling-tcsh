@@ -56,6 +56,9 @@ int alrmcatch_disabled; /* = 0; */
 int phup_disabled; /* = 0; */
 int pchild_disabled; /* = 0; */
 int pintr_disabled; /* = 0; */
+#ifdef DARLING
+extern
+#endif
 int handle_interrupt; /* = 0; */
 
 int
