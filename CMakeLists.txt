@@ -83,7 +83,7 @@ include(InstallSymlink)
 install(TARGETS tcsh DESTINATION libexec/darling/bin)
 InstallSymlink(tcsh "${CMAKE_INSTALL_PREFIX}/libexec/darling/bin/csh")
 
-install(FILES csh.cshrc csh.login csh.logout DESTINATION libexec/darling/etc)
+install(FILES csh.cshrc csh.login csh.logout DESTINATION libexec/darling/private/etc)
 
 install(FILES tcsh/tcsh.man DESTINATION libexec/darling/usr/share/man/man1 RENAME tcsh.1)
 
